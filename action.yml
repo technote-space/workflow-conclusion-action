@@ -1,7 +1,7 @@
 # https://help.github.com/ja/articles/metadata-syntax-for-github-actions
-name: GitHub Actions Template
+name: Workflow Conclusion Action
 
-description: Template for GitHub actions.
+description: GitHub action to wait for other actions to finish.
 
 author: technote-space
 
