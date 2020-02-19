@@ -57,7 +57,7 @@ jobs:
     steps:
         # run this action to get workflow conclusion
         # You can get conclusion by env (env.WORKFLOW_CONCLUSION)
-      - uses: technote-space/workflow-conclusion-action@gh-actions
+      - uses: technote-space/workflow-conclusion-action@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: 8398a7/action-slack@v2
