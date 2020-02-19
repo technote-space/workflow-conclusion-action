@@ -246,15 +246,15 @@ jobs:
         if: always() && steps.drafter.outputs.html_url
 
   slack:
-    name: Create Release
+    name: Slack
     needs: [eslint, cover, release, package, publishRelease]
     runs-on: ubuntu-latest
-    if: failure()
+    if: always()
     steps:
       - uses: technote-space/workflow-conclusion-action@gh-actions
       - uses: 8398a7/action-slack@v2
         with:
-          status: failure
+          status: ${{ env.WORKFLOW_CONCLUSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
