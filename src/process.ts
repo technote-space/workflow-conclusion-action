@@ -2,7 +2,7 @@ import { Context } from '@actions/github/lib/context';
 import { setOutput, exportVariable, getInput } from '@actions/core';
 import { Octokit } from '@octokit/rest';
 import { Logger, Utils } from '@technote-space/github-action-helper';
-import { CONCLUSIONS } from './constant'
+import { CONCLUSIONS } from './constant';
 
 export const getJobs = async(octokit: Octokit, context: Context): Promise<Array<Octokit.ActionsListJobsForWorkflowRunResponseJobsItem>> => octokit.paginate(
 	octokit.actions.listJobsForWorkflowRun.endpoint.merge({
