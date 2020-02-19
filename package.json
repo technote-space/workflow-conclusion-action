@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/workflow-conclusion-action",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "GitHub action to wait for other actions to finish.",
   "author": {
     "name": "Technote",
