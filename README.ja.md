@@ -5,7 +5,9 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/technote-space/workflow-conclusion-action/badge)](https://www.codefactor.io/repository/github/technote-space/workflow-conclusion-action)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/workflow-conclusion-action/blob/master/LICENSE)
 
-GitHub action to get workflow conclusion.
+*Read this in other languages: [English](README.md), [日本語](README.ja.md).*
+
+これはワークフローの結果を取得するための`GitHub Actions`です。
 
 ## Table of Contents
 
@@ -14,7 +16,7 @@ GitHub action to get workflow conclusion.
 <details>
 <summary>Details</summary>
 
-- [Usage](#usage)
+- [使用方法](#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
   - [Success](#success)
   - [Failure](#failure)
 - [Author](#author)
@@ -22,8 +24,8 @@ GitHub action to get workflow conclusion.
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Usage
-e.g. Lint => Test => Publish (only tagged) => slack (only if any job fails)
+## 使用方法
+例：Lint => Test => Publish (タグ付与時のみ) => slack (いずれかのジョブが失敗した場合のみ)
 ```yaml
 on: push
 
@@ -73,12 +75,12 @@ jobs:
 ### Success
 ![Success](https://raw.githubusercontent.com/technote-space/workflow-conclusion-action/images/success.png)
 
-Slack action step is skipped because all jobs are success.
+すべてのジョブが正常だったため、Slackアクションはスキップされます。
 
 ### Failure
 ![Failure](https://raw.githubusercontent.com/technote-space/workflow-conclusion-action/images/failure.png)
 
-Slack action step has been executed even if some jobs were skipped.
+いくつかのジョブがスキップされた場合でもSlackアクションは実行されます。
 
 ## Author
 [GitHub (Technote)](https://github.com/technote-space)  
