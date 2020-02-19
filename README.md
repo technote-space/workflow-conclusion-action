@@ -22,11 +22,63 @@ GitHub action to get workflow conclusion.
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Setup
-### yarn
-- `yarn setup`
-### npm
-- `npm run setup`
+## Usage
+e.g. Lint => Test => Publish (only tagged) => slack (only if any job fails)
+```yaml
+on: push
+
+name: CI
+
+jobs:
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    ...
+
+  test:
+    name: Coverage
+    needs: lint
+    strategy:
+      matrix:
+        node: ['11', '12']
+    ...
+
+  publish:
+    name: Publish Package
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/v')
+    ...
+
+  slack:
+    name: Slack
+    needs: publish # set needs only last job except this job
+    runs-on: ubuntu-latest
+    if: always() # set always
+    steps:
+        # run this action to get workflow conclusion
+        # You can get conclusion by env (env.WORKFLOW_CONCLUSION)
+      - uses: technote-space/workflow-conclusion-action@gh-actions
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: 8398a7/action-slack@v2
+        with:
+          # status: ${{ env.WORKFLOW_CONCLUSION }} # skipped, success, cancelled, failure
+          status: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: env.WORKFLOW_CONCLUSION == 'failure' # notify only if failure
+```
+
+### Success
+![Success](https://raw.githubusercontent.com/technote-space/workflow-conclusion-action/images/success.png)
+
+Slack action step is skipped because all jobs are success.
+
+### Failure
+![Failure](https://raw.githubusercontent.com/technote-space/workflow-conclusion-action/images/failure.png)
+
+Slack action step has been executed even if some jobs were skipped.
 
 ## Author
 [GitHub (Technote)](https://github.com/technote-space)  
