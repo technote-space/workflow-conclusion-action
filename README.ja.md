@@ -16,9 +16,9 @@
 <details>
 <summary>Details</summary>
 
-- [Setup](#setup)
-  - [yarn](#yarn)
-  - [npm](#npm)
+- [使用方法](#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
+  - [Success](#success)
+  - [Failure](#failure)
 - [Author](#author)
 
 </details>
