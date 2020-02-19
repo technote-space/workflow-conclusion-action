@@ -1,7 +1,7 @@
 {
-  "name": "@technote-space/gh-actions-template",
+  "name": "@technote-space/wait-finish-action",
   "version": "0.1.5",
-  "description": "Template for GitHub actions.",
+  "description": "GitHub action to wait for other actions to finish.",
   "author": {
     "name": "Technote",
     "email": "technote.space@gmail.com",
@@ -12,13 +12,13 @@
     "github",
     "github actions"
   ],
-  "homepage": "https://github.com/technote-space/gh-actions-template",
+  "homepage": "https://github.com/technote-space/wait-finish-action",
   "repository": {
     "type": "git",
-    "url": "https://github.com/technote-space/gh-actions-template.git"
+    "url": "https://github.com/technote-space/wait-finish-action.git"
   },
   "bugs": {
-    "url": "https://github.com/technote-space/gh-actions-template/issues"
+    "url": "https://github.com/technote-space/wait-finish-action/issues"
   },
   "files": [
     "lib",
@@ -47,7 +47,6 @@
     "access": "public"
   },
   "scripts": {
-    "setup": "bash bin/setup.sh && if [[ -f __DELETE__ ]]; then rm -rdf bin; rm -f __DELETE__; fi",
     "build": "tsc",
     "test": "yarn lint && yarn cover",
     "lint": "eslint 'src/**/*.ts' '__tests__/**/*.ts' --cache",
