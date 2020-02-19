@@ -2,7 +2,7 @@ import { Context } from '@actions/github/lib/context';
 import { setOutput, exportVariable, getInput } from '@actions/core';
 import { Octokit } from '@octokit/rest';
 import { Logger, Utils } from '@technote-space/github-action-helper';
-import { CONCLUSIONS } from './constant';
+import { CONCLUSIONS } from './constant'
 
 export const getJobs = async(octokit: Octokit, context: Context): Promise<Array<Octokit.ActionsListJobsForWorkflowRunResponseJobsItem>> => octokit.paginate(
 	octokit.actions.listJobsForWorkflowRun.endpoint.merge({
@@ -11,7 +11,7 @@ export const getJobs = async(octokit: Octokit, context: Context): Promise<Array<
 	}),
 );
 
-export const getJobConclusions = (jobs: Array<{ conclusion: string }>): Array<string> => Utils.uniqueArray(jobs.map(job => job.conclusion));
+export const getJobConclusions = (jobs: Array<{ conclusion: string | null }>): Array<string> => Utils.uniqueArray(jobs.filter(job => null !== job.conclusion).map(job => String(job.conclusion)));
 
 // eslint-disable-next-line no-magic-numbers
 const getLastElement = <T>(array: Array<T>): T => array.slice(-1)[0];
