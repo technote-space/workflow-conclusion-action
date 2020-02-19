@@ -1,0 +1,58 @@
+{
+  "name": "@technote-space/gh-actions-template",
+  "version": "0.1.5",
+  "description": "Template for GitHub actions.",
+  "author": {
+    "name": "Technote",
+    "email": "technote.space@gmail.com",
+    "url": "https://technote.space"
+  },
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "github actions"
+  ],
+  "homepage": "https://github.com/technote-space/gh-actions-template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/technote-space/gh-actions-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/technote-space/gh-actions-template/issues"
+  },
+  "files": [
+    "lib",
+    "action.yml"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "@actions/github": "^2.1.0",
+    "@technote-space/filter-github-action": "^0.2.3",
+    "@technote-space/github-action-helper": "^1.1.3"
+  },
+  "devDependencies": {
+    "@technote-space/github-action-test-helper": "^0.2.2",
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.2",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "jest-circus": "^25.1.0",
+    "nock": "^12.0.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.7.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "setup": "bash bin/setup.sh && if [[ -f __DELETE__ ]]; then rm -rdf bin; rm -f __DELETE__; fi",
+    "build": "tsc",
+    "test": "yarn lint && yarn cover",
+    "lint": "eslint 'src/**/*.ts' '__tests__/**/*.ts' --cache",
+    "lint:fix": "eslint --fix 'src/**/*.ts' '__tests__/**/*.ts'",
+    "cover": "jest --coverage",
+    "update": "ncu -u && yarn install && yarn upgrade && yarn audit"
+  }
+}

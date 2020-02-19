@@ -1,0 +1,20 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+name: TOC Generator
+
+jobs:
+  toc:
+    name: TOC Generator
+    runs-on: ubuntu-latest
+    steps:
+      - name: TOC Generator
+        uses: technote-space/toc-generator@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_BRANCH_PREFIX: release/
+          FOLDING: true
+          MAX_HEADER_LEVEL: 3
+          TOC_TITLE: Details
