@@ -1,6 +1,6 @@
 name: Workflow Conclusion Action
 
-description: GitHub action to wait for other actions to finish.
+description: GitHub action to get workflow conclusion.
 
 author: technote-space
 

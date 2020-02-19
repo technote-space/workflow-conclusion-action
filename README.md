@@ -5,7 +5,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/technote-space/workflow-conclusion-action/badge)](https://www.codefactor.io/repository/github/technote-space/workflow-conclusion-action)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/workflow-conclusion-action/blob/master/LICENSE)
 
-GitHub action to wait for other actions to finish.
+GitHub action to get workflow conclusion.
 
 ## Table of Contents
 
