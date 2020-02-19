@@ -1,9 +1,9 @@
-# Wait Finish Action
+# Workflow Conclusion Action
 
-[![CI Status](https://github.com/technote-space/wait-finish-action/workflows/CI/badge.svg)](https://github.com/technote-space/wait-finish-action/actions)
-[![codecov](https://codecov.io/gh/technote-space/wait-finish-action/branch/master/graph/badge.svg)](https://codecov.io/gh/technote-space/wait-finish-action)
-[![CodeFactor](https://www.codefactor.io/repository/github/technote-space/wait-finish-action/badge)](https://www.codefactor.io/repository/github/technote-space/wait-finish-action)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/wait-finish-action/blob/master/LICENSE)
+[![CI Status](https://github.com/technote-space/workflow-conclusion-action/workflows/CI/badge.svg)](https://github.com/technote-space/workflow-conclusion-action/actions)
+[![codecov](https://codecov.io/gh/technote-space/workflow-conclusion-action/branch/master/graph/badge.svg)](https://codecov.io/gh/technote-space/workflow-conclusion-action)
+[![CodeFactor](https://www.codefactor.io/repository/github/technote-space/workflow-conclusion-action/badge)](https://www.codefactor.io/repository/github/technote-space/workflow-conclusion-action)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/workflow-conclusion-action/blob/master/LICENSE)
 
 GitHub action to wait for other actions to finish.
 

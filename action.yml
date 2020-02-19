@@ -1,5 +1,5 @@
 # https://help.github.com/ja/articles/metadata-syntax-for-github-actions
-name: Wait Finish Action
+name: Workflow Conclusion Action
 
 description: GitHub action to wait for other actions to finish.
 
