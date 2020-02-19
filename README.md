@@ -14,9 +14,9 @@ GitHub action to get workflow conclusion.
 <details>
 <summary>Details</summary>
 
-- [Setup](#setup)
-  - [yarn](#yarn)
-  - [npm](#npm)
+- [Usage](#usage)
+  - [Success](#success)
+  - [Failure](#failure)
 - [Author](#author)
 
 </details>
