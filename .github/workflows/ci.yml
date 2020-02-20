@@ -249,7 +249,7 @@ jobs:
     name: Slack
     needs: publishRelease
     runs-on: ubuntu-latest
-    if: "! success()"
+#    if: "! success()"
     steps:
 #      - uses: technote-space/workflow-conclusion-action@gh-actions
 #        with:
