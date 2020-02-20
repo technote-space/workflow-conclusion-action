@@ -23,13 +23,13 @@ export const execute = async(logger: Logger, octokit: Octokit, context: Context)
 	const conclusions = getJobConclusions(jobs);
 	const conclusion  = getWorkflowConclusion(conclusions);
 
-	// logger.startProcess('Jobs: ');
+	logger.startProcess('Jobs: ');
 	console.log(jobs);
 
-	// logger.startProcess('Conclusions: ');
+	logger.startProcess('Conclusions: ');
 	console.log(conclusions);
 
-	// logger.startProcess('Conclusion: ');
+	logger.startProcess('Conclusion: ');
 	console.log(conclusion);
 
 	setOutput('conclusion', conclusion);
