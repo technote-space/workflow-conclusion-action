@@ -2,7 +2,7 @@ import path from 'path';
 import { setFailed } from '@actions/core';
 import { Context } from '@actions/github/lib/context';
 import { Logger, ContextHelper, Utils } from '@technote-space/github-action-helper';
-import { execute } from './process'
+import { execute } from './process';
 
 const run = async(): Promise<void> => {
 	const logger  = new Logger();
