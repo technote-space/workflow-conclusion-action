@@ -249,14 +249,14 @@ jobs:
     name: Slack
     needs: publishRelease
     runs-on: ubuntu-latest
-#    if: "! success()"
+    if: always()
     steps:
-#      - uses: technote-space/workflow-conclusion-action@gh-actions
-#        with:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: technote-space/workflow-conclusion-action@gh-actions
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: 8398a7/action-slack@v2
         with:
-          status: ${{ job.status }}
+          status: ${{ env.WORKFLOW_CONCLUSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
