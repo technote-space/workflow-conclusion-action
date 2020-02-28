@@ -28,6 +28,7 @@ jobs:
             trigger workflow
             update TOC
             update package version
+            update wp version
           TITLE: '## Changes'
           LINK_ISSUE_KEYWORD: ${{ (startsWith(github.event.pull_request.head.ref, 'release/') && 'closes') || '' }}
           FILTER_PR: true
