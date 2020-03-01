@@ -5,6 +5,8 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/technote-space/workflow-conclusion-action/badge)](https://www.codefactor.io/repository/github/technote-space/workflow-conclusion-action)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/workflow-conclusion-action/blob/master/LICENSE)
 
+*Read this in other languages: [English](README.md), [日本語](README.ja.md).*
+
 GitHub action to get workflow conclusion.
 
 ## Table of Contents
