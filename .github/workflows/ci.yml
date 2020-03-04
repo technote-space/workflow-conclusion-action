@@ -255,8 +255,6 @@ jobs:
     if: always()
     steps:
       - uses: technote-space/workflow-conclusion-action@gh-actions
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: 8398a7/action-slack@v2
         with:
           status: failure
