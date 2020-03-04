@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 import nock from 'nock';
 import { resolve } from 'path';
-import { testEnv, spyOnStdout, getOctokit, generateContext, getApiFixture, disableNetConnect, stdoutContains } from '@technote-space/github-action-test-helper';
+import { testEnv, spyOnStdout, getOctokit, generateContext, getApiFixture, disableNetConnect, stdoutContains, getLogStdout } from '@technote-space/github-action-test-helper';
 import { Logger } from '@technote-space/github-action-helper';
 import { getJobs, getJobConclusions, getWorkflowConclusion, execute } from '../src/process';
 
@@ -20,7 +20,7 @@ describe('getJobs', () => {
 		nock('https://api.github.com')
 			.persist()
 			.get('/repos/hello/world/actions/runs/123/jobs')
-			.reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs'));
+			.reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs1'));
 
 		const jobs = await getJobs(octokit, context);
 
@@ -34,20 +34,22 @@ describe('getJobs', () => {
 describe('getJobConclusions', () => {
 	it('should get conclusions', () => {
 		expect(getJobConclusions([
-			{conclusion: 'cancelled'},
-			{conclusion: 'skipped'},
-			{conclusion: 'failure'},
-			{conclusion: 'success'},
-			{conclusion: 'failure'},
-			{conclusion: 'success'},
-			{conclusion: 'cancelled'},
-			{conclusion: 'test'},
+			{name: 'test1', conclusion: 'cancelled'},
+			{name: 'test2', conclusion: 'neutral'},
+			{name: 'test3', conclusion: 'failure'},
+			{name: 'test4', conclusion: 'success'},
+			{name: 'test5', conclusion: 'failure'},
+			{name: 'test6', conclusion: 'success'},
+			{name: 'test7', conclusion: 'cancelled'},
+			{name: 'test8', conclusion: 'test1'},
+			{name: 'test8', conclusion: 'test2'},
+			{name: 'test8', conclusion: 'test3'},
 		])).toEqual([
 			'cancelled',
-			'skipped',
+			'neutral',
 			'failure',
 			'success',
-			'test',
+			'test3',
 		]);
 	});
 });
@@ -56,7 +58,7 @@ describe('getWorkflowConclusion', () => {
 	it('should get workflow conclusion', () => {
 		expect(getWorkflowConclusion([])).toBe('failure');
 		expect(getWorkflowConclusion([
-			'skipped',
+			'neutral',
 			'success',
 			'cancelled',
 		])).toBe('cancelled');
@@ -67,24 +69,45 @@ describe('execute', () => {
 	testEnv(rootDir);
 	disableNetConnect(nock);
 
-	it('should get payload', async() => {
+	it('should get payload 1', async() => {
 		process.env.GITHUB_RUN_ID = '123';
 		const mockStdout          = spyOnStdout();
 		nock('https://api.github.com')
 			.persist()
 			.get('/repos/hello/world/actions/runs/123/jobs')
-			.reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs'));
+			.reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs1'));
 
 		await execute(logger, octokit, context);
 
 		stdoutContains(mockStdout, [
 			'::group::Jobs:',
 			'::group::Conclusions:',
-			JSON.stringify(['success'], null, '\t'),
+			getLogStdout(['success']),
 			'::group::Conclusion:',
 			'"success"',
 			'::set-output name=conclusion::success',
 			'::set-env name=WORKFLOW_CONCLUSION::success',
+		]);
+	});
+
+	it('should get payload 2', async() => {
+		process.env.GITHUB_RUN_ID = '123';
+		const mockStdout          = spyOnStdout();
+		nock('https://api.github.com')
+			.persist()
+			.get('/repos/hello/world/actions/runs/123/jobs')
+			.reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs2'));
+
+		await execute(logger, octokit, context);
+
+		stdoutContains(mockStdout, [
+			'::group::Jobs:',
+			'::group::Conclusions:',
+			getLogStdout(['success', 'cancelled']),
+			'::group::Conclusion:',
+			'"cancelled"',
+			'::set-output name=conclusion::cancelled',
+			'::set-env name=WORKFLOW_CONCLUSION::cancelled',
 		]);
 	});
 
@@ -95,14 +118,14 @@ describe('execute', () => {
 		nock('https://api.github.com')
 			.persist()
 			.get('/repos/hello/world/actions/runs/123/jobs')
-			.reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs'));
+			.reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs1'));
 
 		await execute(logger, octokit, context);
 
 		stdoutContains(mockStdout, [
 			'::group::Jobs:',
 			'::group::Conclusions:',
-			JSON.stringify(['success'], null, '\t'),
+			getLogStdout(['success']),
 			'::group::Conclusion:',
 			'"success"',
 			'::set-output name=conclusion::success',

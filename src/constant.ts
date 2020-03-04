@@ -1,6 +1,7 @@
 export const CONCLUSIONS = [
-	'skipped',
+	'neutral',
 	'success',
 	'cancelled',
+	'timed_out',
 	'failure',
 ];
