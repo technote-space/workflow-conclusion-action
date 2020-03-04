@@ -60,8 +60,6 @@ jobs:
         # run this action to get workflow conclusion
         # You can get conclusion by env (env.WORKFLOW_CONCLUSION)
       - uses: technote-space/workflow-conclusion-action@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: 8398a7/action-slack@v2
         with:
           # status: ${{ env.WORKFLOW_CONCLUSION }} # skipped, success, cancelled, failure
