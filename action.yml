@@ -1,0 +1,27 @@
+name: Workflow Conclusion Action
+
+description: GitHub action to get workflow conclusion.
+
+author: technote-space
+
+inputs:
+  GITHUB_TOKEN:
+    description: Secret GitHub API token to use for making API requests.
+    default: ${{ github.token }}
+    required: true
+  SET_ENV_NAME:
+    description: Env name
+    required: false
+    default: WORKFLOW_CONCLUSION
+
+outputs:
+  conclusion:
+    description: Workflow conclusion
+
+branding:
+  icon: 'check-circle'
+  color: 'green'
+
+runs:
+  using: node12
+  main: lib/main.js
