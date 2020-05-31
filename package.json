@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/workflow-conclusion-action",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "GitHub action to get workflow conclusion.",
   "author": {
     "name": "Technote",
