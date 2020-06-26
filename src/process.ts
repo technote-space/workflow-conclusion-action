@@ -1,14 +1,16 @@
 import {Context} from '@actions/github/lib/context';
 import {setOutput, exportVariable, getInput} from '@actions/core';
-import {Octokit} from '@octokit/rest';
+import {Octokit} from '@technote-space/github-action-helper/dist/types';
 import {Logger, Utils} from '@technote-space/github-action-helper';
+import {ActionsListJobsForWorkflowRunResponseData} from '@octokit/types/dist-types/generated/Endpoints';
 import {CONCLUSIONS} from './constant';
 
-export const getJobs = async(octokit: Octokit, context: Context): Promise<Array<Octokit.ActionsListJobsForWorkflowRunResponseJobsItem>> => octokit.paginate(
-  octokit.actions.listJobsForWorkflowRun.endpoint.merge({
+export const getJobs = async(octokit: Octokit, context: Context): Promise<ActionsListJobsForWorkflowRunResponseData['jobs']> => octokit.paginate(
+  octokit.actions.listJobsForWorkflowRun,
+  {
     ...context.repo,
     'run_id': Number(process.env.GITHUB_RUN_ID),
-  }),
+  },
 );
 
 export const getJobConclusions = (jobs: Array<{ name: string; conclusion: string | null }>): Array<string> => Utils.uniqueArray(
