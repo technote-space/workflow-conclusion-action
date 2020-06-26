@@ -13,7 +13,7 @@
       "conclusion": "failure",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "lint",
       "steps": [
         {
           "name": "Set up job",
@@ -304,7 +304,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test0",
       "steps": [
         {
           "name": "Set up job",
@@ -401,7 +401,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test1",
       "steps": [
         {
           "name": "Set up job",
@@ -498,7 +498,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test2",
       "steps": [
         {
           "name": "Set up job",
@@ -595,7 +595,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test3",
       "steps": [
         {
           "name": "Set up job",
@@ -692,7 +692,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test4",
       "steps": [
         {
           "name": "Set up job",
@@ -789,7 +789,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test5",
       "steps": [
         {
           "name": "Set up job",
@@ -886,7 +886,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test6",
       "steps": [
         {
           "name": "Set up job",
@@ -983,7 +983,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test7",
       "steps": [
         {
           "name": "Set up job",
@@ -1080,7 +1080,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test8",
       "steps": [
         {
           "name": "Set up job",
@@ -1177,7 +1177,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test9",
       "steps": [
         {
           "name": "Set up job",
@@ -1274,7 +1274,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test10",
       "steps": [
         {
           "name": "Set up job",
@@ -1371,7 +1371,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test11",
       "steps": [
         {
           "name": "Set up job",
@@ -1468,7 +1468,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test12",
       "steps": [
         {
           "name": "Set up job",
@@ -1565,7 +1565,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test13",
       "steps": [
         {
           "name": "Set up job",
@@ -1662,7 +1662,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test14",
       "steps": [
         {
           "name": "Set up job",
@@ -1759,7 +1759,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test15",
       "steps": [
         {
           "name": "Set up job",
@@ -1856,7 +1856,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test16",
       "steps": [
         {
           "name": "Set up job",
@@ -1953,7 +1953,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test17",
       "steps": [
         {
           "name": "Set up job",
@@ -2050,7 +2050,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test18",
       "steps": [
         {
           "name": "Set up job",
@@ -2147,7 +2147,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test19",
       "steps": [
         {
           "name": "Set up job",
@@ -2244,7 +2244,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test20",
       "steps": [
         {
           "name": "Set up job",
@@ -2341,7 +2341,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test21",
       "steps": [
         {
           "name": "Set up job",
@@ -2438,7 +2438,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test22",
       "steps": [
         {
           "name": "Set up job",
@@ -2535,7 +2535,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test23",
       "steps": [
         {
           "name": "Set up job",
@@ -2632,7 +2632,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test24",
       "steps": [
         {
           "name": "Set up job",
@@ -2729,7 +2729,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test25",
       "steps": [
         {
           "name": "Set up job",
@@ -2826,7 +2826,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test26",
       "steps": [
         {
           "name": "Set up job",
@@ -2923,7 +2923,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test27",
       "steps": [
         {
           "name": "Set up job",
@@ -3020,7 +3020,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test28",
       "steps": [
         {
           "name": "Set up job",
@@ -3117,7 +3117,7 @@
       "conclusion": "success",
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
-      "name": "build",
+      "name": "test29",
       "steps": [
         {
           "name": "Set up job",

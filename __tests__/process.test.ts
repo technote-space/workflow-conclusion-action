@@ -124,11 +124,11 @@ describe('execute', () => {
     stdoutContains(mockStdout, [
       '::group::Jobs:',
       '::group::Conclusions:',
-      getLogStdout(['success', 'cancelled']),
+      getLogStdout(['failure', 'cancelled', 'success']),
       '::group::Conclusion:',
-      '"cancelled"',
-      '::set-output name=conclusion::cancelled',
-      '::set-env name=WORKFLOW_CONCLUSION::cancelled',
+      '"failure"',
+      '::set-output name=conclusion::failure',
+      '::set-env name=WORKFLOW_CONCLUSION::failure',
     ]);
   });
 
