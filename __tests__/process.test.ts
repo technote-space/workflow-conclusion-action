@@ -111,6 +111,27 @@ describe('execute', () => {
     ]);
   });
 
+  it('should get payload 3', async() => {
+    process.env.GITHUB_RUN_ID = '123';
+    const mockStdout          = spyOnStdout();
+    nock('https://api.github.com')
+      .persist()
+      .get('/repos/hello/world/actions/runs/123/jobs')
+      .reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs3'));
+
+    await execute(logger, octokit, context);
+
+    stdoutContains(mockStdout, [
+      '::group::Jobs:',
+      '::group::Conclusions:',
+      getLogStdout(['success', 'cancelled']),
+      '::group::Conclusion:',
+      '"cancelled"',
+      '::set-output name=conclusion::cancelled',
+      '::set-env name=WORKFLOW_CONCLUSION::cancelled',
+    ]);
+  });
+
   it('should get payload without env', async() => {
     process.env.GITHUB_RUN_ID      = '123';
     process.env.INPUT_SET_ENV_NAME = '';
