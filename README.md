@@ -58,7 +58,7 @@ jobs:
     if: always() # set always
     steps:
         # run this action to get workflow conclusion
-        # You can get conclusion by env (env.WORKFLOW_CONCLUSION)
+        # You can get conclusion via env (env.WORKFLOW_CONCLUSION)
       - uses: technote-space/workflow-conclusion-action@v1
       - uses: 8398a7/action-slack@v2
         with:
