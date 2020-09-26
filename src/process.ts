@@ -1,7 +1,8 @@
 import {Context} from '@actions/github/lib/context';
 import {setOutput, exportVariable, getInput} from '@actions/core';
 import {Octokit} from '@technote-space/github-action-helper/dist/types';
-import {Logger, Utils} from '@technote-space/github-action-helper';
+import {Utils} from '@technote-space/github-action-helper';
+import {Logger} from '@technote-space/github-action-log-helper';
 import {ActionsListJobsForWorkflowRunResponseData} from '@octokit/types/dist-types/generated/Endpoints';
 import {CONCLUSIONS} from './constant';
 

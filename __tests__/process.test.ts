@@ -1,8 +1,19 @@
 /* eslint-disable no-magic-numbers */
 import nock from 'nock';
 import {resolve} from 'path';
-import {testEnv, spyOnStdout, getOctokit, generateContext, getApiFixture, disableNetConnect, stdoutContains, getLogStdout} from '@technote-space/github-action-test-helper';
-import {Logger} from '@technote-space/github-action-helper';
+import {
+  testEnv,
+  spyOnStdout,
+  getOctokit,
+  generateContext,
+  getApiFixture,
+  disableNetConnect,
+  stdoutContains,
+  getLogStdout,
+  spyOnExportVariable,
+  exportVariableCalledWith,
+} from '@technote-space/github-action-test-helper';
+import {Logger} from '@technote-space/github-action-log-helper';
 import {getJobs, getJobConclusions, getWorkflowConclusion, execute} from '../src/process';
 
 const rootDir        = resolve(__dirname, '..');
@@ -72,6 +83,7 @@ describe('execute', () => {
   it('should get payload 1', async() => {
     process.env.GITHUB_RUN_ID = '123';
     const mockStdout          = spyOnStdout();
+    const mockEnv             = spyOnExportVariable();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -86,13 +98,16 @@ describe('execute', () => {
       '::group::Conclusion:',
       '"success"',
       '::set-output name=conclusion::success',
-      '::set-env name=WORKFLOW_CONCLUSION::success',
+    ]);
+    exportVariableCalledWith(mockEnv, [
+      {name: 'WORKFLOW_CONCLUSION', val: 'success'},
     ]);
   });
 
   it('should get payload 2', async() => {
     process.env.GITHUB_RUN_ID = '123';
     const mockStdout          = spyOnStdout();
+    const mockEnv             = spyOnExportVariable();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -107,13 +122,16 @@ describe('execute', () => {
       '::group::Conclusion:',
       '"cancelled"',
       '::set-output name=conclusion::cancelled',
-      '::set-env name=WORKFLOW_CONCLUSION::cancelled',
+    ]);
+    exportVariableCalledWith(mockEnv, [
+      {name: 'WORKFLOW_CONCLUSION', val: 'cancelled'},
     ]);
   });
 
   it('should get payload 3', async() => {
     process.env.GITHUB_RUN_ID = '123';
     const mockStdout          = spyOnStdout();
+    const mockEnv             = spyOnExportVariable();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -128,7 +146,9 @@ describe('execute', () => {
       '::group::Conclusion:',
       '"failure"',
       '::set-output name=conclusion::failure',
-      '::set-env name=WORKFLOW_CONCLUSION::failure',
+    ]);
+    exportVariableCalledWith(mockEnv, [
+      {name: 'WORKFLOW_CONCLUSION', val: 'failure'},
     ]);
   });
 
