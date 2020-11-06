@@ -35,7 +35,7 @@ describe('getJobs', () => {
 
     const jobs = await getJobs(octokit, context);
 
-    expect(jobs).toHaveLength(1);
+    expect(jobs).toHaveLength(2);
     expect(jobs[0]).toHaveProperty('id');
     expect(jobs[0]).toHaveProperty('status');
     expect(jobs[0]).toHaveProperty('conclusion');
