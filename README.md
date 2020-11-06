@@ -59,10 +59,10 @@ jobs:
     steps:
         # run this action to get workflow conclusion
         # You can get conclusion via env (env.WORKFLOW_CONCLUSION)
-      - uses: technote-space/workflow-conclusion-action@v1
-      - uses: 8398a7/action-slack@v2
+      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: 8398a7/action-slack@v3
         with:
-          # status: ${{ env.WORKFLOW_CONCLUSION }} # neutral, success, cancelled, timed_out, failure
+          # status: ${{ env.WORKFLOW_CONCLUSION }} # neutral, success, skipped, cancelled, timed_out, action_required, failure
           status: failure
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
