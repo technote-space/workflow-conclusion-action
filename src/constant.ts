@@ -1,7 +1,7 @@
 export const CONCLUSIONS = [
   'neutral',
-  'success',
   'skipped',
+  'success',
   'cancelled',
   'timed_out',
   'action_required',
