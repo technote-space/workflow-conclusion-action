@@ -52,27 +52,41 @@ describe('getJobConclusions', () => {
       {name: 'test5', conclusion: 'failure'},
       {name: 'test6', conclusion: 'success'},
       {name: 'test7', conclusion: 'cancelled'},
-      {name: 'test8', conclusion: 'test1'},
-      {name: 'test8', conclusion: 'test2'},
-      {name: 'test8', conclusion: 'test3'},
+      {name: 'test8', conclusion: 'skipped'},
+      {name: 'test9', conclusion: 'test1'},
+      {name: 'test9', conclusion: 'test2'},
+      {name: 'test9', conclusion: 'test3'},
     ])).toEqual([
       'cancelled',
       'neutral',
       'failure',
       'success',
+      'skipped',
       'test3',
     ]);
   });
 });
 
 describe('getWorkflowConclusion', () => {
+  testEnv(rootDir);
+
   it('should get workflow conclusion', () => {
-    expect(getWorkflowConclusion([])).toBe('failure');
+    expect(getWorkflowConclusion([])).toBe('skipped');
     expect(getWorkflowConclusion([
       'neutral',
       'success',
       'cancelled',
     ])).toBe('cancelled');
+  });
+
+  it('should get fallback conclusion 1', () => {
+    process.env.INPUT_FALLBACK_CONCLUSION = 'failure';
+    expect(getWorkflowConclusion([])).toBe('failure');
+  });
+
+  it('should get fallback conclusion 2', () => {
+    process.env.INPUT_FALLBACK_CONCLUSION = '';
+    expect(getWorkflowConclusion([])).toBe('');
   });
 });
 
@@ -118,7 +132,7 @@ describe('execute', () => {
     stdoutContains(mockStdout, [
       '::group::Jobs:',
       '::group::Conclusions:',
-      getLogStdout(['success', 'cancelled']),
+      getLogStdout(['success', 'cancelled', 'skipped']),
       '::group::Conclusion:',
       '"cancelled"',
       '::set-output name=conclusion::cancelled',
@@ -149,6 +163,30 @@ describe('execute', () => {
     ]);
     exportVariableCalledWith(mockEnv, [
       {name: 'WORKFLOW_CONCLUSION', val: 'failure'},
+    ]);
+  });
+
+  it('should get payload 4', async() => {
+    process.env.GITHUB_RUN_ID = '123';
+    const mockStdout          = spyOnStdout();
+    const mockEnv             = spyOnExportVariable();
+    nock('https://api.github.com')
+      .persist()
+      .get('/repos/hello/world/actions/runs/123/jobs')
+      .reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs4'));
+
+    await execute(logger, octokit, context);
+
+    stdoutContains(mockStdout, [
+      '::group::Jobs:',
+      '::group::Conclusions:',
+      getLogStdout(['skipped']),
+      '::group::Conclusion:',
+      '"skipped"',
+      '::set-output name=conclusion::skipped',
+    ]);
+    exportVariableCalledWith(mockEnv, [
+      {name: 'WORKFLOW_CONCLUSION', val: 'skipped'},
     ]);
   });
 

@@ -24,9 +24,7 @@ export const getJobConclusions = (jobs: Array<{ name: string; conclusion: string
 );
 
 // eslint-disable-next-line no-magic-numbers
-const getLastElement = <T>(array: Array<T>): T => array.slice(-1)[0];
-
-export const getWorkflowConclusion = (conclusions: Array<string>): string => getLastElement(CONCLUSIONS.filter(conclusion => conclusions.includes(conclusion))) ?? getLastElement(CONCLUSIONS);
+export const getWorkflowConclusion = (conclusions: Array<string>): string => CONCLUSIONS.filter(conclusion => conclusions.includes(conclusion)).slice(-1)[0] ?? getInput('FALLBACK_CONCLUSION');
 
 export const execute = async(logger: Logger, octokit: Octokit, context: Context): Promise<void> => {
   const jobs        = await getJobs(octokit, context);
