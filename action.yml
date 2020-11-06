@@ -13,6 +13,10 @@ inputs:
     description: Env name
     required: false
     default: WORKFLOW_CONCLUSION
+  FALLBACK_CONCLUSION:
+    description: Fallback conclusion
+    required: false
+    default: skipped
 
 outputs:
   conclusion:
