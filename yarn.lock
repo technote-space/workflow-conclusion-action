@@ -719,7 +719,7 @@
   dependencies:
     "@octokit/types" "^5.5.0"
 
-"@octokit/plugin-rest-endpoint-methods@^4.0.0", "@octokit/plugin-rest-endpoint-methods@^4.2.0":
+"@octokit/plugin-rest-endpoint-methods@^4.0.0", "@octokit/plugin-rest-endpoint-methods@^4.2.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-4.2.1.tgz#8224833a45c3394836dc6e86f1e6c49269a2c350"
   integrity sha512-QyFr4Bv807Pt1DXZOC5a7L5aFdrwz71UHTYoHVajYV5hsqffWm8FUl9+O7nxRu5PDMtB/IKrhFqTmdBTK5cx+A==
@@ -772,41 +772,41 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@technote-space/filter-github-action@^0.5.5":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@technote-space/filter-github-action/-/filter-github-action-0.5.6.tgz#a45210745b29760a257f258fc80263d5d05c0056"
-  integrity sha512-9/DEfhoVV4qfea321XS6He8UL9n6sJ9mGyP98ewJ4/N6YT2WuWf6QkScToap/MXhLjFZbg1NYDL5QlxcIpjF5Q==
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/@technote-space/filter-github-action/-/filter-github-action-0.5.7.tgz#6608b1e43347bd49f554d9d928a67482321d06f4"
+  integrity sha512-Z+o9LDjlxavShBxVJLSaqjsF4N7FjCrrv6VNaRbmOGOKVxsp+a4n4vTpsekmpomp5h6pIPwt4RbSmG4JdiBL6g==
   dependencies:
     "@actions/core" "^1.2.6"
     "@actions/github" "^4.0.0"
 
-"@technote-space/github-action-helper@^4.0.4", "@technote-space/github-action-helper@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@technote-space/github-action-helper/-/github-action-helper-4.0.5.tgz#fc9c40c28ed70a710cf4293c0504b4e7566dfc5d"
-  integrity sha512-OfeTupI1xBimQFaoOsuQhPiOZI6NO0cmyWY0O7yZZ/OcUKnf1bNI80wLT0q+I7bfu3fF2W0MO+c6lu9lqgdeBw==
+"@technote-space/github-action-helper@^4.0.4", "@technote-space/github-action-helper@^4.0.6":
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/@technote-space/github-action-helper/-/github-action-helper-4.0.6.tgz#c2dc8f0ac99e01b7b9d96fb73e970278bd4fc44a"
+  integrity sha512-O9/E+JE9fQBlRkqcxRMcbt8eEeIoIUdWW8fG8gvrwpxpFqjs+Bs+Jeg/Wd7+/Ixku4T+8T/dc44BXIIpi4e59w==
   dependencies:
     "@actions/core" "^1.2.6"
     "@actions/github" "^4.0.0"
-    "@octokit/plugin-rest-endpoint-methods" "^4.2.0"
+    "@octokit/plugin-rest-endpoint-methods" "^4.2.1"
     "@technote-space/github-action-log-helper" "^0.1.6"
     shell-escape "^0.2.0"
     sprintf-js "^1.1.2"
 
-"@technote-space/github-action-log-helper@^0.1.0", "@technote-space/github-action-log-helper@^0.1.5", "@technote-space/github-action-log-helper@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@technote-space/github-action-log-helper/-/github-action-log-helper-0.1.6.tgz#548f62d58490b6f05d5e94dd29115d5a1dd90e22"
-  integrity sha512-GtcSuw+cCr+YkrKkNIX1L6GC8s75VgUG6qXMh635cKKQZ6P98ewcQFD4Wbg4O/5+YqOl1O2TBMi9chBZXsSt3A==
+"@technote-space/github-action-log-helper@^0.1.0", "@technote-space/github-action-log-helper@^0.1.5", "@technote-space/github-action-log-helper@^0.1.6", "@technote-space/github-action-log-helper@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@technote-space/github-action-log-helper/-/github-action-log-helper-0.1.7.tgz#40975d3f89969d6b69119c87e98f716e9cae5497"
+  integrity sha512-IzUzp1ooFAfG8Xgwbgnj8ONaSX8oznxqJdhyAfraZZ4W7JFkrbAb4b5Pd7D6bzADjOBIBu22ToZuNq4e7hCl+A==
   dependencies:
     "@actions/core" "^1.2.6"
     sprintf-js "^1.1.2"
 
-"@technote-space/github-action-test-helper@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@technote-space/github-action-test-helper/-/github-action-test-helper-0.6.2.tgz#66db2aee6f3a008847079ea685d4fd6748a175e4"
-  integrity sha512-x7V/6JwuYZInVXrRboHw7Hw0O++6NmtDjmO5qWj3sPRsTQTsMQOCafIkzUuz+cccWDJhD35FTgViEp7OGoVAGw==
+"@technote-space/github-action-test-helper@^0.6.3":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@technote-space/github-action-test-helper/-/github-action-test-helper-0.6.3.tgz#b49ee630c233871658040013bc457df1a492faac"
+  integrity sha512-M48nUnFO4j3blTGWmZpRbgwJ0FaWCD6hMpLlX5YmhxVESt/wEBerxkzwfXohSWc+kLu0Fq6GJTMGbOCpkgneOA==
   dependencies:
     "@actions/core" "^1.2.6"
     "@actions/github" "^4.0.0"
-    "@octokit/plugin-rest-endpoint-methods" "^4.2.0"
+    "@octokit/plugin-rest-endpoint-methods" "^4.2.1"
     js-yaml "^3.14.0"
 
 "@technote-space/release-github-actions-cli@^1.7.1":
@@ -1605,9 +1605,9 @@ copy-descriptor@^0.1.0:
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
 core-js@^3.6.1:
-  version "3.6.5"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
-  integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.7.0.tgz#b0a761a02488577afbf97179e4681bf49568520f"
+  integrity sha512-NwS7fI5M5B85EwpWuIwJN4i/fbisQUwLwiSNUWeXlkAZ0sbBjLEvLvFLf1uzAUV66PcEPt4xCGCmOZSxVf3xzA==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -1901,10 +1901,10 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.0.0.tgz#21fdc8fbcd9c795cc0321f0563702095751511a8"
   integrity sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
 
-eslint@^7.12.1:
-  version "7.12.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.12.1.tgz#bd9a81fa67a6cfd51656cdb88812ce49ccec5801"
-  integrity sha512-HlMTEdr/LicJfN08LB3nM1rRYliDXOmfoO4vj39xN6BLpFzF00hbwBoqHk8UcJ2M/3nlARZWy/mslvGEuZFvsg==
+eslint@^7.13.0:
+  version "7.13.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.13.0.tgz#7f180126c0dcdef327bfb54b211d7802decc08da"
+  integrity sha512-uCORMuOO8tUzJmsdRtrvcGq5qposf7Rw0LwkTJkoDbOycVQtQjmnhZSuLQnozLE4TmAzlMVV45eCHmQ1OpDKUQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@eslint/eslintrc" "^0.2.1"
@@ -5195,9 +5195,9 @@ write@1.0.3:
     mkdirp "^0.5.1"
 
 ws@^7.2.3:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.1.tgz#d0547bf67f7ce4f12a72dfe31262c68d7dc551c8"
-  integrity sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.0.tgz#a5dd76a24197940d4a8bb9e0e152bb4503764da7"
+  integrity sha512-kyFwXuV/5ymf+IXhS6f0+eAFvydbaBW3zjpT6hUdAh/hbVjTIB5EHBGi0bPoCLSK2wcuz3BrEkB9LrYv1Nm4NQ==
 
 xml-name-validator@^3.0.0:
   version "3.0.0"
