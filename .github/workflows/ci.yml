@@ -164,6 +164,11 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - uses: actions/checkout@v2
         if: env.RUNNING
+      - name: Check package version
+        uses: technote-space/package-version-check-action@v1
+        with:
+          COMMIT_DISABLED: 1
+        if: env.RUNNING
       - name: Set running flag
         run: npx can-npm-publish || echo "RUNNING=" >> $GITHUB_ENV
         if: env.RUNNING && matrix.target == 'npm'
@@ -201,11 +206,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-        if: env.RUNNING
-      - name: Check package version
-        uses: technote-space/package-version-check-action@v1
-        with:
-          COMMIT_DISABLED: 1
         if: env.RUNNING
       - name: Install Package dependencies
         run: yarn install
