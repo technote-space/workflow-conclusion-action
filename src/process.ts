@@ -3,10 +3,12 @@ import {setOutput, exportVariable, getInput} from '@actions/core';
 import {Octokit} from '@technote-space/github-action-helper/dist/types';
 import {Utils} from '@technote-space/github-action-helper';
 import {Logger} from '@technote-space/github-action-log-helper';
-import {ActionsListJobsForWorkflowRunResponseData} from '@octokit/types/dist-types/generated/Endpoints';
+import {components} from '@octokit/openapi-types';
 import {CONCLUSIONS} from './constant';
 
-export const getJobs = async(octokit: Octokit, context: Context): Promise<ActionsListJobsForWorkflowRunResponseData['jobs']> => octokit.paginate(
+type ActionsListJobsForWorkflowRunResponseData = components['schemas']['job'];
+
+export const getJobs = async(octokit: Octokit, context: Context): Promise<Array<ActionsListJobsForWorkflowRunResponseData>> => octokit.paginate(
   octokit.actions.listJobsForWorkflowRun,
   {
     ...context.repo,
