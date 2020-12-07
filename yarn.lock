@@ -717,7 +717,7 @@
   dependencies:
     "@octokit/types" "^6.0.1"
 
-"@octokit/plugin-rest-endpoint-methods@^4.0.0", "@octokit/plugin-rest-endpoint-methods@^4.2.1", "@octokit/plugin-rest-endpoint-methods@^4.4.1":
+"@octokit/plugin-rest-endpoint-methods@^4.0.0", "@octokit/plugin-rest-endpoint-methods@^4.4.1":
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-4.4.1.tgz#105cf93255432155de078c9efc33bd4e14d1cd63"
   integrity sha512-+v5PcvrUcDeFXf8hv1gnNvNLdm4C0+2EiuWt9EatjjUmfriM1pTMM+r4j1lLHxeBQ9bVDmbywb11e3KjuavieA==
@@ -770,7 +770,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@technote-space/filter-github-action@^0.5.7":
+"@technote-space/filter-github-action@^0.5.9":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@technote-space/filter-github-action/-/filter-github-action-0.5.9.tgz#6ae27b324f792a856f65b851452fa7504839f3f3"
   integrity sha512-88k0fkIf9KP3qX4aLF0PXbsOwW4xZ4pBQSd7smE+rsWhLIRWUkEQ6SyyWwVzvz/ojwxk2uawUfpz/5RVLh/LnA==
@@ -778,19 +778,20 @@
     "@actions/core" "^1.2.6"
     "@actions/github" "^4.0.0"
 
-"@technote-space/github-action-helper@^4.2.4", "@technote-space/github-action-helper@^4.2.7", "@technote-space/github-action-helper@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@technote-space/github-action-helper/-/github-action-helper-4.4.1.tgz#ea8105c9edb0cab1c9af1f716bdc7e59c932f53b"
-  integrity sha512-ob4dlZqPU1o+VMC3WU3UXwC9Cm189NVM9jkWk5XeNEMLp8NS+SlNUdYhdAla6VcaEMUgJS6NXL76977ClvmFoQ==
+"@technote-space/github-action-helper@^4.4.4":
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/@technote-space/github-action-helper/-/github-action-helper-4.4.4.tgz#09acc6e4439523d2503adb115d8665e627a2aa44"
+  integrity sha512-3sy/b+V2GBKVxttEgjVQO+ZL2c0+UsVI10QMdMMR7evyF/wTXv6Pzarh2sHKqiKtnnzjXvfIT8ztfFR0vke7xQ==
   dependencies:
     "@actions/core" "^1.2.6"
     "@actions/github" "^4.0.0"
-    "@octokit/plugin-rest-endpoint-methods" "^4.2.1"
-    "@technote-space/github-action-log-helper" "^0.1.8"
+    "@octokit/openapi-types" "^2.0.0"
+    "@octokit/plugin-rest-endpoint-methods" "^4.4.1"
+    "@technote-space/github-action-log-helper" "^0.1.9"
     shell-escape "^0.2.0"
     sprintf-js "^1.1.2"
 
-"@technote-space/github-action-log-helper@^0.1.7", "@technote-space/github-action-log-helper@^0.1.8", "@technote-space/github-action-log-helper@^0.1.9":
+"@technote-space/github-action-log-helper@^0.1.9":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@technote-space/github-action-log-helper/-/github-action-log-helper-0.1.9.tgz#dffa42319cb6aee8365bd1240edbe91b65e184dc"
   integrity sha512-OqxsuOTYctvfZTZETf3CXPwX1/n4BPOyynlufEplTTu73kpEbl9WQDKMDEYyCQPXuSi8x9QyIk6jW/3VTGNsYw==
@@ -808,29 +809,29 @@
     "@octokit/plugin-rest-endpoint-methods" "^4.4.1"
     js-yaml "^3.14.0"
 
-"@technote-space/release-github-actions-cli@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@technote-space/release-github-actions-cli/-/release-github-actions-cli-1.7.2.tgz#0b8fce37a558576ce18bf5551a4c767bfdcf1859"
-  integrity sha512-kMuKl29X/3o2dYHIyn8SBR/6SAc/JR1fi/7ilFLMHBKDZb3XjYcFzWp5ajCDXNq9M2Y7B9xGuAp0gTCvRUQ0vA==
+"@technote-space/release-github-actions-cli@^1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@technote-space/release-github-actions-cli/-/release-github-actions-cli-1.7.3.tgz#01377e7e4b666120e795c9101a6efe68e06d0d89"
+  integrity sha512-t9KLcsFDPO1catciokX7T1yom+PStBG6kyDhXziVWPDPlW8s4cde7C7o1XOa/8a9KDvU9EHHHQvt0RaEqqrQBg==
   dependencies:
-    "@technote-space/github-action-helper" "^4.2.4"
-    "@technote-space/github-action-log-helper" "^0.1.7"
-    "@technote-space/release-github-actions" "^6.2.3"
+    "@technote-space/github-action-helper" "^4.4.4"
+    "@technote-space/github-action-log-helper" "^0.1.9"
+    "@technote-space/release-github-actions" "^6.2.5"
     commander "^6.2.0"
     cosmiconfig "^7.0.0"
     dotenv "^8.2.0"
     js-yaml "^3.14.0"
 
-"@technote-space/release-github-actions@^6.2.3":
-  version "6.2.4"
-  resolved "https://registry.yarnpkg.com/@technote-space/release-github-actions/-/release-github-actions-6.2.4.tgz#bc132a6170c1c470edb568ecec37709488a36958"
-  integrity sha512-wXFS3MCB94S7gt7a8ozfICBQ3Y1rgvMSJMItEpNdFaec490OJ+V5/T+kbkUe2zqKr/wib5Md8wT0m0jKxMtWpA==
+"@technote-space/release-github-actions@^6.2.5":
+  version "6.2.5"
+  resolved "https://registry.yarnpkg.com/@technote-space/release-github-actions/-/release-github-actions-6.2.5.tgz#5b408a0701585c7b508e5c1a5b626b5f224ec843"
+  integrity sha512-iioRlmJCK6Q7jnIueHqOWYE2Z9XDAjxVi0dEViAbH+CoogDI0S/yazvVEiZEnWxQsLV3rgLPoRzlyXPhv9XXSw==
   dependencies:
     "@actions/core" "^1.2.6"
     "@actions/github" "^4.0.0"
-    "@technote-space/filter-github-action" "^0.5.7"
-    "@technote-space/github-action-helper" "^4.2.7"
-    "@technote-space/github-action-log-helper" "^0.1.8"
+    "@technote-space/filter-github-action" "^0.5.9"
+    "@technote-space/github-action-helper" "^4.4.4"
+    "@technote-space/github-action-log-helper" "^0.1.9"
     memize "^1.1.0"
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
@@ -2484,10 +2485,10 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-husky@^4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-4.3.4.tgz#676275a10ec5be2e893bd6ff71113bb829cc1f5b"
-  integrity sha512-wykHsss5kQtmbFrjQv0R7YyW1uFd7fv7gT1sA54potoDYmOTENJtBC/X1/AyoSAi1obp8CiGODOIdOGnPxSmFg==
+husky@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-4.3.5.tgz#ab8d2a0eb6b62fef2853ee3d442c927d89290902"
+  integrity sha512-E5S/1HMoDDaqsH8kDF5zeKEQbYqe3wL9zJDyqyYqc8I4vHBtAoxkDBGXox0lZ9RI+k5GyB728vZdmnM4bYap+g==
   dependencies:
     chalk "^4.0.0"
     ci-info "^2.0.0"
