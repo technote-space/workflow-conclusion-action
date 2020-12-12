@@ -18,7 +18,9 @@ import {getJobs, getJobConclusions, getWorkflowConclusion, execute} from '../src
 
 const rootDir        = resolve(__dirname, '..');
 const fixtureRootDir = resolve(__dirname, 'fixtures');
-const context        = generateContext({owner: 'hello', repo: 'world'});
+const context        = generateContext({owner: 'hello', repo: 'world'}, {
+  runId: 123,
+});
 const octokit        = getOctokit();
 const logger         = new Logger();
 
@@ -27,7 +29,6 @@ describe('getJobs', () => {
   disableNetConnect(nock);
 
   it('should get jobs', async() => {
-    process.env.GITHUB_RUN_ID = '123';
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -39,6 +40,18 @@ describe('getJobs', () => {
     expect(jobs[0]).toHaveProperty('id');
     expect(jobs[0]).toHaveProperty('status');
     expect(jobs[0]).toHaveProperty('conclusion');
+  });
+
+  it('should get jobs with input run id', async() => {
+    process.env.INPUT_TARGET_RUN_ID = '456';
+    nock('https://api.github.com')
+      .persist()
+      .get('/repos/hello/world/actions/runs/456/jobs')
+      .reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs1'));
+
+    const jobs = await getJobs(octokit, context);
+
+    expect(jobs).toHaveLength(2);
   });
 });
 
@@ -95,9 +108,8 @@ describe('execute', () => {
   disableNetConnect(nock);
 
   it('should get payload 1', async() => {
-    process.env.GITHUB_RUN_ID = '123';
-    const mockStdout          = spyOnStdout();
-    const mockEnv             = spyOnExportVariable();
+    const mockStdout = spyOnStdout();
+    const mockEnv    = spyOnExportVariable();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -119,9 +131,8 @@ describe('execute', () => {
   });
 
   it('should get payload 2', async() => {
-    process.env.GITHUB_RUN_ID = '123';
-    const mockStdout          = spyOnStdout();
-    const mockEnv             = spyOnExportVariable();
+    const mockStdout = spyOnStdout();
+    const mockEnv    = spyOnExportVariable();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -143,9 +154,8 @@ describe('execute', () => {
   });
 
   it('should get payload 3', async() => {
-    process.env.GITHUB_RUN_ID = '123';
-    const mockStdout          = spyOnStdout();
-    const mockEnv             = spyOnExportVariable();
+    const mockStdout = spyOnStdout();
+    const mockEnv    = spyOnExportVariable();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -167,9 +177,8 @@ describe('execute', () => {
   });
 
   it('should get payload 4', async() => {
-    process.env.GITHUB_RUN_ID = '123';
-    const mockStdout          = spyOnStdout();
-    const mockEnv             = spyOnExportVariable();
+    const mockStdout = spyOnStdout();
+    const mockEnv    = spyOnExportVariable();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -191,7 +200,6 @@ describe('execute', () => {
   });
 
   it('should get payload without env', async() => {
-    process.env.GITHUB_RUN_ID      = '123';
     process.env.INPUT_SET_ENV_NAME = '';
     const mockStdout               = spyOnStdout();
     nock('https://api.github.com')
