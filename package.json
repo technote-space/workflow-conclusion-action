@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/workflow-conclusion-action",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "GitHub action to get workflow conclusion.",
   "keywords": [
     "github",
@@ -47,7 +47,7 @@
     "@technote-space/github-action-test-helper": "^0.6.6",
     "@technote-space/release-github-actions-cli": "^1.7.3",
     "@types/jest": "^26.0.19",
-    "@types/node": "^14.14.12",
+    "@types/node": "^14.14.13",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "eslint": "^7.15.0",
