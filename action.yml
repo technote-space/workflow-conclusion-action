@@ -21,6 +21,10 @@ inputs:
     description: Fallback conclusion
     required: false
     default: skipped
+  GITHUB_API_URL:
+    description: GITHUB API URL
+    required: false
+    default: https://api.github.com
 
 outputs:
   conclusion:
