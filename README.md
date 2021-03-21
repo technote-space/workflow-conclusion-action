@@ -21,6 +21,8 @@ GitHub action to get workflow conclusion.
   - [Failure](#failure)
 - [Author](#author)
 
+*generated with [TOC Generator](https://github.com/technote-space/toc-generator)*
+
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
