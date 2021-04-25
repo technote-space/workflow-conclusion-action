@@ -39,8 +39,8 @@
   "dependencies": {
     "@actions/core": "^1.2.7",
     "@actions/github": "^4.0.0",
-    "@octokit/openapi-types": "^6.0.0",
-    "@octokit/types": "^6.13.0",
+    "@octokit/openapi-types": "^6.1.1",
+    "@octokit/types": "^6.13.2",
     "@technote-space/github-action-helper": "^5.2.5",
     "@technote-space/github-action-log-helper": "^0.1.22"
   },
@@ -53,7 +53,7 @@
     "@types/node": "^14.14.41",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "husky": "^6.0.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
