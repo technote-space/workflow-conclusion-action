@@ -39,16 +39,16 @@
   "dependencies": {
     "@actions/core": "^1.2.7",
     "@actions/github": "^4.0.0",
-    "@octokit/openapi-types": "^6.2.1",
-    "@octokit/types": "^6.14.1",
-    "@technote-space/github-action-helper": "^5.2.6",
+    "@octokit/openapi-types": "^7.0.0",
+    "@octokit/types": "^6.14.2",
+    "@technote-space/github-action-helper": "^5.2.7",
     "@technote-space/github-action-log-helper": "^0.1.24"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@technote-space/github-action-test-helper": "^0.7.9",
-    "@technote-space/release-github-actions-cli": "^1.8.4",
+    "@technote-space/release-github-actions-cli": "^1.8.5",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.1",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
