@@ -8146,8 +8146,6 @@ export interface components {
       name?: string;
       /** The severity of the alert. */
       severity?: ("none" | "note" | "warning" | "error") | null;
-      /** The security severity of the alert. */
-      security_severity_level?: ("low" | "medium" | "high" | "critical") | null;
       /** A short description of the rule used to detect the alert. */
       description?: string;
       /** description of the rule used to detect the alert. */
