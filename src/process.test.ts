@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 import { describe, expect, it } from 'vitest';
 import nock from 'nock';
-import {resolve} from 'path';
+import { resolve } from 'path';
 import {
   testEnv,
   spyOnStdout,
@@ -14,12 +14,12 @@ import {
   spyOnExportVariable,
   exportVariableCalledWith,
 } from '@technote-space/github-action-test-helper';
-import {Logger} from '@technote-space/github-action-log-helper';
-import {getJobs, getJobConclusions, getWorkflowConclusion, execute} from '../src/process';
+import { Logger } from '@technote-space/github-action-log-helper';
+import { getJobs, getJobConclusions, getWorkflowConclusion, execute } from './process';
 
 const rootDir        = resolve(__dirname, '..');
 const fixtureRootDir = resolve(__dirname, 'fixtures');
-const context        = generateContext({owner: 'hello', repo: 'world'}, {
+const context        = generateContext({ owner: 'hello', repo: 'world' }, {
   runId: 123,
 });
 const octokit        = getOctokit();
@@ -59,17 +59,17 @@ describe('getJobs', () => {
 describe('getJobConclusions', () => {
   it('should get conclusions', () => {
     expect(getJobConclusions([
-      {name: 'test1', conclusion: 'cancelled'},
-      {name: 'test2', conclusion: 'neutral'},
-      {name: 'test3', conclusion: 'failure'},
-      {name: 'test4', conclusion: 'success'},
-      {name: 'test5', conclusion: 'failure'},
-      {name: 'test6', conclusion: 'success'},
-      {name: 'test7', conclusion: 'cancelled'},
-      {name: 'test8', conclusion: 'skipped'},
-      {name: 'test9', conclusion: 'test1'},
-      {name: 'test9', conclusion: 'test2'},
-      {name: 'test9', conclusion: 'test3'},
+      { name: 'test1', conclusion: 'cancelled' },
+      { name: 'test2', conclusion: 'neutral' },
+      { name: 'test3', conclusion: 'failure' },
+      { name: 'test4', conclusion: 'success' },
+      { name: 'test5', conclusion: 'failure' },
+      { name: 'test6', conclusion: 'success' },
+      { name: 'test7', conclusion: 'cancelled' },
+      { name: 'test8', conclusion: 'skipped' },
+      { name: 'test9', conclusion: 'test1' },
+      { name: 'test9', conclusion: 'test2' },
+      { name: 'test9', conclusion: 'test3' },
     ])).toEqual([
       'cancelled',
       'neutral',
@@ -127,7 +127,7 @@ describe('execute', () => {
       '::set-output name=conclusion::success',
     ]);
     exportVariableCalledWith(mockEnv, [
-      {name: 'WORKFLOW_CONCLUSION', val: 'success'},
+      { name: 'WORKFLOW_CONCLUSION', val: 'success' },
     ]);
   });
 
@@ -150,7 +150,7 @@ describe('execute', () => {
       '::set-output name=conclusion::cancelled',
     ]);
     exportVariableCalledWith(mockEnv, [
-      {name: 'WORKFLOW_CONCLUSION', val: 'cancelled'},
+      { name: 'WORKFLOW_CONCLUSION', val: 'cancelled' },
     ]);
   });
 
@@ -173,7 +173,7 @@ describe('execute', () => {
       '::set-output name=conclusion::failure',
     ]);
     exportVariableCalledWith(mockEnv, [
-      {name: 'WORKFLOW_CONCLUSION', val: 'failure'},
+      { name: 'WORKFLOW_CONCLUSION', val: 'failure' },
     ]);
   });
 
@@ -196,7 +196,7 @@ describe('execute', () => {
       '::set-output name=conclusion::skipped',
     ]);
     exportVariableCalledWith(mockEnv, [
-      {name: 'WORKFLOW_CONCLUSION', val: 'skipped'},
+      { name: 'WORKFLOW_CONCLUSION', val: 'skipped' },
     ]);
   });
 

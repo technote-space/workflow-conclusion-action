@@ -1,10 +1,10 @@
-import type {Context} from '@actions/github/lib/context';
-import type {Octokit} from '@technote-space/github-action-helper/dist/types';
-import type {Logger} from '@technote-space/github-action-log-helper';
-import {setOutput, exportVariable, getInput} from '@actions/core';
-import {Utils} from '@technote-space/github-action-helper';
-import {components} from '@octokit/openapi-types';
-import {CONCLUSIONS} from './constant';
+import type { Context } from '@actions/github/lib/context';
+import type { Octokit } from '@technote-space/github-action-helper/dist/types';
+import type { Logger } from '@technote-space/github-action-log-helper';
+import { setOutput, exportVariable, getInput } from '@actions/core';
+import { Utils } from '@technote-space/github-action-helper';
+import { components } from '@octokit/openapi-types';
+import { CONCLUSIONS } from './constant';
 
 type ActionsListJobsForWorkflowRunResponseData = components['schemas']['job'];
 
@@ -22,8 +22,8 @@ export const getJobConclusions = (jobs: Array<{ name: string; conclusion: string
   Object.values(
     jobs
       .filter(job => null !== job.conclusion)
-      .map(job => ({name: job.name, conclusion: String(job.conclusion)}))
-      .reduce((acc, job) => ({...acc, [job.name]: job.conclusion}), {}),
+      .map(job => ({ name: job.name, conclusion: String(job.conclusion) }))
+      .reduce((acc, job) => ({ ...acc, [job.name]: job.conclusion }), {}),
   ),
 );
 
