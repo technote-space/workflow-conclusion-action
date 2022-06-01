@@ -1,7 +1,6 @@
 /* eslint-disable no-magic-numbers */
-import { describe, expect, it } from 'vitest';
-import nock from 'nock';
 import { resolve } from 'path';
+import { Logger } from '@technote-space/github-action-log-helper';
 import {
   testEnv,
   spyOnStdout,
@@ -14,7 +13,8 @@ import {
   spyOnExportVariable,
   exportVariableCalledWith,
 } from '@technote-space/github-action-test-helper';
-import { Logger } from '@technote-space/github-action-log-helper';
+import nock from 'nock';
+import { describe, expect, it } from 'vitest';
 import { getJobs, getJobConclusions, getWorkflowConclusion, execute } from './process';
 
 const rootDir        = resolve(__dirname, '..');
