@@ -1,4 +1,5 @@
 /* eslint-disable no-magic-numbers */
+import { describe, expect, it } from 'vitest';
 import nock from 'nock';
 import {resolve} from 'path';
 import {
