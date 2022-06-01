@@ -8,11 +8,11 @@ inputs:
   GITHUB_TOKEN:
     description: Secret GitHub API token to use for making API requests.
     default: ${{ github.token }}
-    required: true
+    required: false
   TARGET_RUN_ID:
     description: Target run id
     default: ${{ github.run_id }}
-    required: true
+    required: false
   SET_ENV_NAME:
     description: Env name
     required: false
