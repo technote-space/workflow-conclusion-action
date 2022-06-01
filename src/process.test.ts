@@ -59,23 +59,26 @@ describe('getJobs', () => {
 describe('getJobConclusions', () => {
   it('should get conclusions', () => {
     expect(getJobConclusions([
-      { name: 'test1', conclusion: 'cancelled' },
-      { name: 'test2', conclusion: 'neutral' },
-      { name: 'test3', conclusion: 'failure' },
-      { name: 'test4', conclusion: 'success' },
-      { name: 'test5', conclusion: 'failure' },
-      { name: 'test6', conclusion: 'success' },
-      { name: 'test7', conclusion: 'cancelled' },
-      { name: 'test8', conclusion: 'skipped' },
-      { name: 'test9', conclusion: 'test1' },
-      { name: 'test9', conclusion: 'test2' },
-      { name: 'test9', conclusion: 'test3' },
+      { conclusion: 'cancelled' },
+      { conclusion: null },
+      { conclusion: 'neutral' },
+      { conclusion: 'failure' },
+      { conclusion: 'success' },
+      { conclusion: 'failure' },
+      { conclusion: 'success' },
+      { conclusion: 'cancelled' },
+      { conclusion: 'skipped' },
+      { conclusion: 'test1' },
+      { conclusion: 'test2' },
+      { conclusion: 'test3' },
     ])).toEqual([
       'cancelled',
       'neutral',
       'failure',
       'success',
       'skipped',
+      'test1',
+      'test2',
       'test3',
     ]);
   });
@@ -121,7 +124,7 @@ describe('execute', () => {
     stdoutContains(mockStdout, [
       '::group::Jobs:',
       '::group::Conclusions:',
-      getLogStdout(['success']),
+      getLogStdout(['skipped', 'success']),
       '::group::Conclusion:',
       '"success"',
       '::set-output name=conclusion::success',
@@ -144,7 +147,7 @@ describe('execute', () => {
     stdoutContains(mockStdout, [
       '::group::Jobs:',
       '::group::Conclusions:',
-      getLogStdout(['success', 'cancelled', 'skipped']),
+      getLogStdout(['cancelled', 'success', 'skipped']),
       '::group::Conclusion:',
       '"cancelled"',
       '::set-output name=conclusion::cancelled',
@@ -213,7 +216,7 @@ describe('execute', () => {
     stdoutContains(mockStdout, [
       '::group::Jobs:',
       '::group::Conclusions:',
-      getLogStdout(['success']),
+      getLogStdout(['skipped', 'success']),
       '::group::Conclusion:',
       '"success"',
       '::set-output name=conclusion::success',
