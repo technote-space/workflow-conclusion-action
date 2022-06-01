@@ -1,9 +1,9 @@
 import type { Context } from '@actions/github/lib/context';
 import type { Octokit } from '@technote-space/github-action-helper/dist/types';
 import type { Logger } from '@technote-space/github-action-log-helper';
+import type { components } from '@octokit/openapi-types';
 import { setOutput, exportVariable, getInput } from '@actions/core';
 import { Utils } from '@technote-space/github-action-helper';
-import { components } from '@octokit/openapi-types';
 import { CONCLUSIONS } from './constant';
 
 type ActionsListJobsForWorkflowRunResponseData = components['schemas']['job'];
