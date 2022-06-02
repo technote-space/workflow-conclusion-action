@@ -21,6 +21,10 @@ inputs:
     description: Fallback conclusion
     required: false
     default: skipped
+  STRICT_SUCCESS:
+    description: Whether to report as success only if all jobs are successful
+    required: false
+    default: "false"
 
 outputs:
   conclusion:

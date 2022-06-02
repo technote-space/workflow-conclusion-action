@@ -24,8 +24,11 @@ export const getJobConclusions = (jobs: Array<{ conclusion: string | null }>): A
     .map(job => job.conclusion),
 );
 
-// eslint-disable-next-line no-magic-numbers
-export const getWorkflowConclusion = (conclusions: Array<string>): string => CONCLUSIONS.filter(conclusion => conclusions.includes(conclusion)).slice(-1)[0] ?? getInput('FALLBACK_CONCLUSION');
+export const getWorkflowConclusion = (conclusions: Array<string>): string =>
+  !conclusions.length ? getInput('FALLBACK_CONCLUSION') :
+    Utils.getBoolValue(getInput('STRICT_SUCCESS')) ?
+      conclusions.some(conclusion => conclusion !== 'success') ? 'failure' : 'success' :
+      CONCLUSIONS.filter(conclusion => conclusions.includes(conclusion)).slice(-1)[0] ?? getInput('FALLBACK_CONCLUSION');
 
 export const execute = async(logger: Logger, octokit: Octokit, context: Context): Promise<void> => {
   const jobs        = await getJobs(octokit, context);
