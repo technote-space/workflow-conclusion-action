@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import { resolve } from 'path';
 import { Logger } from '@technote-space/github-action-log-helper';
 import {
@@ -89,21 +88,34 @@ describe('getWorkflowConclusion', () => {
 
   it('should get workflow conclusion', () => {
     expect(getWorkflowConclusion([])).toBe('skipped');
+    expect(getWorkflowConclusion(['test'])).toBe('skipped');
     expect(getWorkflowConclusion([
       'neutral',
-      'success',
       'cancelled',
+      'success',
     ])).toBe('cancelled');
+    expect(getWorkflowConclusion([
+      'failure',
+      'cancelled',
+    ])).toBe('failure');
   });
 
-  it('should get fallback conclusion 1', () => {
+  it('should get specified fallback conclusion', () => {
     process.env.INPUT_FALLBACK_CONCLUSION = 'failure';
     expect(getWorkflowConclusion([])).toBe('failure');
   });
 
-  it('should get fallback conclusion 2', () => {
-    process.env.INPUT_FALLBACK_CONCLUSION = '';
-    expect(getWorkflowConclusion([])).toBe('');
+  it('should get workflow conclusion (strict success)', () => {
+    process.env.INPUT_STRICT_SUCCESS = 'true';
+    expect(getWorkflowConclusion(['success'])).toBe('success');
+    expect(getWorkflowConclusion(['success', 'success'])).toBe('success');
+
+    expect(getWorkflowConclusion(['skipped'])).toBe('failure');
+    expect(getWorkflowConclusion(['success', 'success', 'skipped'])).toBe('failure');
+    expect(getWorkflowConclusion([])).toBe('skipped');
+
+    process.env.INPUT_FALLBACK_CONCLUSION = 'failure';
+    expect(getWorkflowConclusion([])).toBe('failure');
   });
 });
 
