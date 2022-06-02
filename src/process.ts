@@ -18,13 +18,10 @@ export const getJobs = async(octokit: Octokit, context: Context): Promise<Array<
   },
 );
 
-export const getJobConclusions = (jobs: Array<{ name: string; conclusion: string | null }>): Array<string> => Utils.uniqueArray(
-  Object.values(
-    jobs
-      .filter(job => null !== job.conclusion)
-      .map(job => ({ name: job.name, conclusion: String(job.conclusion) }))
-      .reduce((acc, job) => ({ ...acc, [job.name]: job.conclusion }), {}),
-  ),
+export const getJobConclusions = (jobs: Array<{ conclusion: string | null }>): Array<string> => Utils.uniqueArray(
+  jobs
+    .filter((job): job is { conclusion: string } => null !== job.conclusion)
+    .map(job => job.conclusion),
 );
 
 // eslint-disable-next-line no-magic-numbers
