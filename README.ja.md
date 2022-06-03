@@ -61,7 +61,7 @@ jobs:
     steps:
         # workflowの結果を取得するためにこのアクションを実行
         # 環境変数から結果を取得できます (env.WORKFLOW_CONCLUSION)
-      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: technote-space/workflow-conclusion-action@v3
 
         # workflowの結果を使用してアクションを実行
       - uses: 8398a7/action-slack@v3

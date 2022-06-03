@@ -61,7 +61,7 @@ jobs:
     steps:
         # run this action to get the workflow conclusion
         # You can get the conclusion via env (env.WORKFLOW_CONCLUSION)
-      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: technote-space/workflow-conclusion-action@v3
 
         # run other action with the workflow conclusion
       - uses: 8398a7/action-slack@v3
