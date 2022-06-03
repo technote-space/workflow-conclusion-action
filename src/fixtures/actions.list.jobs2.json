@@ -10,7 +10,7 @@
       "url": "https://api.github.com/repos/octo-org/octo-repo/actions/jobs/399444496",
       "html_url": "https://github.com/octo-org/octo-repo/runs/399444496",
       "status": "completed",
-      "conclusion": "failure",
+      "conclusion": null,
       "started_at": "2020-01-20T17:42:40Z",
       "completed_at": "2020-01-20T17:44:39Z",
       "name": "build",

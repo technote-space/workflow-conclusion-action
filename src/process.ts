@@ -1,10 +1,10 @@
-import type {Context} from '@actions/github/lib/context';
-import type {Octokit} from '@technote-space/github-action-helper/dist/types';
-import type {Logger} from '@technote-space/github-action-log-helper';
-import {setOutput, exportVariable, getInput} from '@actions/core';
-import {Utils} from '@technote-space/github-action-helper';
-import {components} from '@octokit/openapi-types';
-import {CONCLUSIONS} from './constant';
+import type { Context } from '@actions/github/lib/context';
+import type { components } from '@octokit/openapi-types';
+import type { Octokit } from '@technote-space/github-action-helper/dist/types';
+import type { Logger } from '@technote-space/github-action-log-helper';
+import { setOutput, exportVariable, getInput } from '@actions/core';
+import { Utils } from '@technote-space/github-action-helper';
+import { CONCLUSIONS } from './constant';
 
 type ActionsListJobsForWorkflowRunResponseData = components['schemas']['job'];
 
@@ -18,17 +18,17 @@ export const getJobs = async(octokit: Octokit, context: Context): Promise<Array<
   },
 );
 
-export const getJobConclusions = (jobs: Array<{ name: string; conclusion: string | null }>): Array<string> => Utils.uniqueArray(
-  Object.values(
-    jobs
-      .filter(job => null !== job.conclusion)
-      .map(job => ({name: job.name, conclusion: String(job.conclusion)}))
-      .reduce((acc, job) => ({...acc, [job.name]: job.conclusion}), {}),
-  ),
+export const getJobConclusions = (jobs: Array<{ conclusion: string | null }>): Array<string> => Utils.uniqueArray(
+  jobs
+    .filter((job): job is { conclusion: string } => null !== job.conclusion)
+    .map(job => job.conclusion),
 );
 
-// eslint-disable-next-line no-magic-numbers
-export const getWorkflowConclusion = (conclusions: Array<string>): string => CONCLUSIONS.filter(conclusion => conclusions.includes(conclusion)).slice(-1)[0] ?? getInput('FALLBACK_CONCLUSION');
+export const getWorkflowConclusion = (conclusions: Array<string>): string =>
+  !conclusions.length ? getInput('FALLBACK_CONCLUSION') :
+    Utils.getBoolValue(getInput('STRICT_SUCCESS')) ?
+      conclusions.some(conclusion => conclusion !== 'success') ? 'failure' : 'success' :
+      CONCLUSIONS.filter(conclusion => conclusions.includes(conclusion)).slice(-1)[0] ?? getInput('FALLBACK_CONCLUSION');
 
 export const execute = async(logger: Logger, octokit: Octokit, context: Context): Promise<void> => {
   const jobs        = await getJobs(octokit, context);

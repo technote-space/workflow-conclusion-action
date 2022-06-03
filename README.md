@@ -55,13 +55,15 @@ jobs:
 
   slack:
     name: Slack
-    needs: publish # set needs only last job except this job
+    needs: publish # set "needs" only last job except this job
     runs-on: ubuntu-latest
-    if: always() # set always
+    if: always() # set "always"
     steps:
-        # run this action to get workflow conclusion
-        # You can get conclusion via env (env.WORKFLOW_CONCLUSION)
-      - uses: technote-space/workflow-conclusion-action@v2
+        # run this action to get the workflow conclusion
+        # You can get the conclusion via env (env.WORKFLOW_CONCLUSION)
+      - uses: technote-space/workflow-conclusion-action@v3
+
+        # run other action with the workflow conclusion
       - uses: 8398a7/action-slack@v3
         with:
           # status: ${{ env.WORKFLOW_CONCLUSION }} # neutral, success, skipped, cancelled, timed_out, action_required, failure

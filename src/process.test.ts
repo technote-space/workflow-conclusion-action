@@ -1,6 +1,5 @@
-/* eslint-disable no-magic-numbers */
-import nock from 'nock';
-import {resolve} from 'path';
+import { resolve } from 'path';
+import { Logger } from '@technote-space/github-action-log-helper';
 import {
   testEnv,
   spyOnStdout,
@@ -13,12 +12,13 @@ import {
   spyOnExportVariable,
   exportVariableCalledWith,
 } from '@technote-space/github-action-test-helper';
-import {Logger} from '@technote-space/github-action-log-helper';
-import {getJobs, getJobConclusions, getWorkflowConclusion, execute} from '../src/process';
+import nock from 'nock';
+import { describe, expect, it } from 'vitest';
+import { getJobs, getJobConclusions, getWorkflowConclusion, execute } from './process';
 
 const rootDir        = resolve(__dirname, '..');
 const fixtureRootDir = resolve(__dirname, 'fixtures');
-const context        = generateContext({owner: 'hello', repo: 'world'}, {
+const context        = generateContext({ owner: 'hello', repo: 'world' }, {
   runId: 123,
 });
 const octokit        = getOctokit();
@@ -58,23 +58,26 @@ describe('getJobs', () => {
 describe('getJobConclusions', () => {
   it('should get conclusions', () => {
     expect(getJobConclusions([
-      {name: 'test1', conclusion: 'cancelled'},
-      {name: 'test2', conclusion: 'neutral'},
-      {name: 'test3', conclusion: 'failure'},
-      {name: 'test4', conclusion: 'success'},
-      {name: 'test5', conclusion: 'failure'},
-      {name: 'test6', conclusion: 'success'},
-      {name: 'test7', conclusion: 'cancelled'},
-      {name: 'test8', conclusion: 'skipped'},
-      {name: 'test9', conclusion: 'test1'},
-      {name: 'test9', conclusion: 'test2'},
-      {name: 'test9', conclusion: 'test3'},
+      { conclusion: 'cancelled' },
+      { conclusion: null },
+      { conclusion: 'neutral' },
+      { conclusion: 'failure' },
+      { conclusion: 'success' },
+      { conclusion: 'failure' },
+      { conclusion: 'success' },
+      { conclusion: 'cancelled' },
+      { conclusion: 'skipped' },
+      { conclusion: 'test1' },
+      { conclusion: 'test2' },
+      { conclusion: 'test3' },
     ])).toEqual([
       'cancelled',
       'neutral',
       'failure',
       'success',
       'skipped',
+      'test1',
+      'test2',
       'test3',
     ]);
   });
@@ -85,21 +88,34 @@ describe('getWorkflowConclusion', () => {
 
   it('should get workflow conclusion', () => {
     expect(getWorkflowConclusion([])).toBe('skipped');
+    expect(getWorkflowConclusion(['test'])).toBe('skipped');
     expect(getWorkflowConclusion([
       'neutral',
-      'success',
       'cancelled',
+      'success',
     ])).toBe('cancelled');
+    expect(getWorkflowConclusion([
+      'failure',
+      'cancelled',
+    ])).toBe('failure');
   });
 
-  it('should get fallback conclusion 1', () => {
+  it('should get specified fallback conclusion', () => {
     process.env.INPUT_FALLBACK_CONCLUSION = 'failure';
     expect(getWorkflowConclusion([])).toBe('failure');
   });
 
-  it('should get fallback conclusion 2', () => {
-    process.env.INPUT_FALLBACK_CONCLUSION = '';
-    expect(getWorkflowConclusion([])).toBe('');
+  it('should get workflow conclusion (strict success)', () => {
+    process.env.INPUT_STRICT_SUCCESS = 'true';
+    expect(getWorkflowConclusion(['success'])).toBe('success');
+    expect(getWorkflowConclusion(['success', 'success'])).toBe('success');
+
+    expect(getWorkflowConclusion(['skipped'])).toBe('failure');
+    expect(getWorkflowConclusion(['success', 'success', 'skipped'])).toBe('failure');
+    expect(getWorkflowConclusion([])).toBe('skipped');
+
+    process.env.INPUT_FALLBACK_CONCLUSION = 'failure';
+    expect(getWorkflowConclusion([])).toBe('failure');
   });
 });
 
@@ -120,13 +136,13 @@ describe('execute', () => {
     stdoutContains(mockStdout, [
       '::group::Jobs:',
       '::group::Conclusions:',
-      getLogStdout(['success']),
+      getLogStdout(['skipped', 'success']),
       '::group::Conclusion:',
       '"success"',
       '::set-output name=conclusion::success',
     ]);
     exportVariableCalledWith(mockEnv, [
-      {name: 'WORKFLOW_CONCLUSION', val: 'success'},
+      { name: 'WORKFLOW_CONCLUSION', val: 'success' },
     ]);
   });
 
@@ -143,13 +159,13 @@ describe('execute', () => {
     stdoutContains(mockStdout, [
       '::group::Jobs:',
       '::group::Conclusions:',
-      getLogStdout(['success', 'cancelled', 'skipped']),
+      getLogStdout(['cancelled', 'success', 'skipped']),
       '::group::Conclusion:',
       '"cancelled"',
       '::set-output name=conclusion::cancelled',
     ]);
     exportVariableCalledWith(mockEnv, [
-      {name: 'WORKFLOW_CONCLUSION', val: 'cancelled'},
+      { name: 'WORKFLOW_CONCLUSION', val: 'cancelled' },
     ]);
   });
 
@@ -172,7 +188,7 @@ describe('execute', () => {
       '::set-output name=conclusion::failure',
     ]);
     exportVariableCalledWith(mockEnv, [
-      {name: 'WORKFLOW_CONCLUSION', val: 'failure'},
+      { name: 'WORKFLOW_CONCLUSION', val: 'failure' },
     ]);
   });
 
@@ -195,7 +211,7 @@ describe('execute', () => {
       '::set-output name=conclusion::skipped',
     ]);
     exportVariableCalledWith(mockEnv, [
-      {name: 'WORKFLOW_CONCLUSION', val: 'skipped'},
+      { name: 'WORKFLOW_CONCLUSION', val: 'skipped' },
     ]);
   });
 
@@ -212,7 +228,7 @@ describe('execute', () => {
     stdoutContains(mockStdout, [
       '::group::Jobs:',
       '::group::Conclusions:',
-      getLogStdout(['success']),
+      getLogStdout(['skipped', 'success']),
       '::group::Conclusion:',
       '"success"',
       '::set-output name=conclusion::success',
