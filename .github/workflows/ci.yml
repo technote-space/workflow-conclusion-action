@@ -237,6 +237,8 @@ jobs:
     if: always()
     steps:
       - uses: technote-space/workflow-conclusion-action@gh-actions
+        with:
+          STRICT_SUCCESS: true
       - uses: 8398a7/action-slack@v3
         with:
           status: failure
