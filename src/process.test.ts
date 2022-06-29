@@ -53,6 +53,19 @@ describe('getJobs', () => {
 
     expect(jobs).toHaveLength(2);
   });
+
+  it('should retry a retrieval if any jobs are incomplete', async() => {
+    nock('https://api.github.com')
+      .persist()
+      .get('/repos/hello/world/actions/runs/123/jobs')
+      .reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs5'))
+      .get('/repos/hello/world/actions/runs/123/jobs')
+      .reply(200, () => getApiFixture(fixtureRootDir, 'actions.list.jobs1'));
+
+    const jobs = await getJobs(octokit, context);
+    const incomplete = jobs.filter(job => job.status !== 'completed' && job.conclusion === null);
+    expect(incomplete).toHaveLength(0);
+  }, 100000);
 });
 
 describe('getJobConclusions', () => {
