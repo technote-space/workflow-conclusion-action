@@ -11,6 +11,8 @@ import {
   getLogStdout,
   spyOnExportVariable,
   exportVariableCalledWith,
+  spyOnSetOutput,
+  setOutputCalledWith,
 } from '@technote-space/github-action-test-helper';
 import nock from 'nock';
 import { describe, expect, it } from 'vitest';
@@ -126,6 +128,7 @@ describe('execute', () => {
   it('should get payload 1', async() => {
     const mockStdout = spyOnStdout();
     const mockEnv    = spyOnExportVariable();
+    const mockOutput = spyOnSetOutput();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -139,16 +142,19 @@ describe('execute', () => {
       getLogStdout(['skipped', 'success']),
       '::group::Conclusion:',
       '"success"',
-      '::set-output name=conclusion::success',
     ]);
     exportVariableCalledWith(mockEnv, [
       { name: 'WORKFLOW_CONCLUSION', val: 'success' },
+    ]);
+    setOutputCalledWith(mockOutput, [
+      { name: 'conclusion', value: 'success' },
     ]);
   });
 
   it('should get payload 2', async() => {
     const mockStdout = spyOnStdout();
     const mockEnv    = spyOnExportVariable();
+    const mockOutput = spyOnSetOutput();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -162,16 +168,19 @@ describe('execute', () => {
       getLogStdout(['cancelled', 'success', 'skipped']),
       '::group::Conclusion:',
       '"cancelled"',
-      '::set-output name=conclusion::cancelled',
     ]);
     exportVariableCalledWith(mockEnv, [
       { name: 'WORKFLOW_CONCLUSION', val: 'cancelled' },
+    ]);
+    setOutputCalledWith(mockOutput, [
+      { name: 'conclusion', value: 'cancelled' },
     ]);
   });
 
   it('should get payload 3', async() => {
     const mockStdout = spyOnStdout();
     const mockEnv    = spyOnExportVariable();
+    const mockOutput = spyOnSetOutput();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -185,16 +194,19 @@ describe('execute', () => {
       getLogStdout(['failure', 'cancelled', 'success']),
       '::group::Conclusion:',
       '"failure"',
-      '::set-output name=conclusion::failure',
     ]);
     exportVariableCalledWith(mockEnv, [
       { name: 'WORKFLOW_CONCLUSION', val: 'failure' },
+    ]);
+    setOutputCalledWith(mockOutput, [
+      { name: 'conclusion', value: 'failure' },
     ]);
   });
 
   it('should get payload 4', async() => {
     const mockStdout = spyOnStdout();
     const mockEnv    = spyOnExportVariable();
+    const mockOutput = spyOnSetOutput();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -208,16 +220,19 @@ describe('execute', () => {
       getLogStdout(['skipped']),
       '::group::Conclusion:',
       '"skipped"',
-      '::set-output name=conclusion::skipped',
     ]);
     exportVariableCalledWith(mockEnv, [
       { name: 'WORKFLOW_CONCLUSION', val: 'skipped' },
+    ]);
+    setOutputCalledWith(mockOutput, [
+      { name: 'conclusion', value: 'skipped' },
     ]);
   });
 
   it('should get payload without env', async() => {
     process.env.INPUT_SET_ENV_NAME = '';
     const mockStdout               = spyOnStdout();
+    const mockOutput               = spyOnSetOutput();
     nock('https://api.github.com')
       .persist()
       .get('/repos/hello/world/actions/runs/123/jobs')
@@ -231,7 +246,9 @@ describe('execute', () => {
       getLogStdout(['skipped', 'success']),
       '::group::Conclusion:',
       '"success"',
-      '::set-output name=conclusion::success',
+    ]);
+    setOutputCalledWith(mockOutput, [
+      { name: 'conclusion', value: 'success' },
     ]);
   });
 });
