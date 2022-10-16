@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/workflow-conclusion-action",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "GitHub action to get workflow conclusion.",
   "keywords": [
     "github",
